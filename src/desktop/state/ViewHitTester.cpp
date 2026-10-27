@@ -154,7 +154,7 @@ PHLWINDOW CViewHitTester::windowAt(const Vector2D& pos, uint16_t properties, PHL
             return found;
 
         // for windows, we need to check their extensions too, first.
-        for (auto const& w : WINDOWS) {
+        for (auto const& w : WINDOWS | std::views::reverse) {
             if (ONLY_PRIORITY && !w->priorityFocus())
                 continue;
 
@@ -171,7 +171,7 @@ PHLWINDOW CViewHitTester::windowAt(const Vector2D& pos, uint16_t properties, PHL
             }
         }
 
-        for (auto const& w : WINDOWS) {
+        for (auto const& w : WINDOWS | std::views::reverse) {
             if (ONLY_PRIORITY && !w->priorityFocus())
                 continue;
 
